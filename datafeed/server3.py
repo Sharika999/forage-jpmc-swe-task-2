@@ -109,13 +109,15 @@ def order_book(orders, book, stock_name):
         yield t, bids, asks
 
 def generate_csv():
-    """Generate a CSV of order history."""
-    with open('test.csv', 'w', newline='') as f:
+    """ Generate a CSV of order history. """
+    with open('test.csv', 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         for t, stock, side, order, size in orders(market()):
             if t > MARKET_OPEN + SIM_LENGTH:
                 break
-            writer.writerow([t, stock, side, order, size])
+            print(f"Writing to CSV: {t}, {stock}, {side}, {order}, {size}")
+            writer.writerow([str(t), str(stock), str(side), str(order), str(size)])
+
 
 def read_csv():
     """Read a CSV of order history into a list."""
