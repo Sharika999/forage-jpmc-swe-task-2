@@ -156,6 +156,8 @@ def generate_csv():
             if t > MARKET_OPEN + SIM_LENGTH:
                 break
             writer.writerow([t, stock, side, order, size])
+    print("CSV generation completed.")
+
 
 
 def read_csv():
