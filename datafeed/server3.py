@@ -64,7 +64,7 @@ def bwalk(min, max, std):
     """ Generates a bounded random walk. """
     rng = max - min
     while True:
-        max += normalvariate(0, std)
+        max += normalvariate(0, std) 
         yield abs((max % (rng * 2)) - rng) + min
 
 
@@ -150,7 +150,7 @@ def order_book(orders, book, stock_name):
 
 def generate_csv():
     """ Generate a CSV of order history. """
-    with open('test.csv', 'wb') as f:
+    with open('test.csv', 'w', newline='') as f:
         writer = csv.writer(f)
         for t, stock, side, order, size in orders(market()):
             if t > MARKET_OPEN + SIM_LENGTH:
